@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Venue | Nexus Events</title>
+  <style>
+    :root {
+      --bg: #08101f;
+      --panel: #0d172b;
+      --accent: #38bdf8;
+      --accent2: #a855f7;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --shadow: 0 30px 50px rgba(0,0,0,.34);
+    }
+    body { margin:0; min-height:100vh; font-family: Inter, system-ui, sans-serif; color: var(--text); background: radial-gradient(circle at 20% 20%, rgba(56,189,248,.12), transparent 16%), radial-gradient(circle at 85% 85%, rgba(168,85,247,.1), transparent 18%), var(--bg); }
+    header { padding: 24px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+    .logo { font-weight:800; letter-spacing:.22em; text-transform:uppercase; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; }
+    nav a { color: var(--text); text-decoration:none; border-radius: 18px; padding: 12px 16px; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); box-shadow: var(--shadow); transition: transform .18s ease, background .18s ease; }
+    nav a:hover { transform: translateY(-2px); background: rgba(255,255,255,.12); }
+    .hero { padding: 40px 32px 0; max-width: 1180px; margin:0 auto; }
+    .hero h1 { margin:0; font-size: clamp(3rem, 5vw, 4.2rem); }
+    .hero p { margin:20px 0 0; color:#b8c2d1; max-width:720px; }
+    .features { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:24px; padding: 34px 32px 48px; max-width:1180px; margin:0 auto; }
+    .feature { background: rgba(15,23,42,.92); border-radius:28px; border:1px solid rgba(255,255,255,.08); padding:28px; box-shadow: var(--shadow); }
+    .feature h2 { margin:0 0 14px; font-size:1.3rem; }
+    .feature p { margin:0; line-height:1.75; color:#cbd5e1; }
+    .banner { grid-column: span 3; background: linear-gradient(135deg, rgba(56,189,248,.18), rgba(168,85,247,.14)); border-radius: 32px; border:1px solid rgba(255,255,255,.1); padding: 32px; box-shadow: var(--shadow); }
+    .banner h2 { margin:0 0 16px; font-size:1.45rem; }
+    .banner p { margin:0; color:#e2e8f0; }
+    @media (max-width: 980px) { .features { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nexus Events</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="evnts.html">Events</a>
+      <a href="tickets.html">Tickets</a>
+      <a href="lists.html">Guestlist</a>
+      <a href="venue.html">Venue</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Venue details for a premium event experience.</h1>
+    <p>Discover seating, access zones, and atmosphere for your chosen event in a clean, gallery-style layout.</p>
+  </section>
+  <main class="features">
+    <section class="feature banner">
+      <h2>Nexus Hall</h2>
+      <p>Modern event space designed for immersive performances, networking, and VIP hospitality. Bold lighting, clear sightlines, and a polished arrival experience.</p>
+    </section>
+    <section class="feature">
+      <h2>Entrance & Flow</h2>
+      <p>Dedicated check-in lanes for standard, premium, and VIP guests keep the door fast and organized. Digital QR scanning for a built-for-mobile entry path.</p>
+    </section>
+    <section class="feature">
+      <h2>Stage & Sound</h2>
+      <p>Stage layout supports both keynote and performance experiences. Crisp sound design with immersive visuals for a memorable event presence.</p>
+    </section>
+    <section class="feature">
+      <h2>VIP Lounge</h2>
+      <p>Private lounge with premium seating, curated service, and guestlist perks for attendees who want a high-touch, elevated experience.</p>
+    </section>
+    <section class="feature">
+      <h2>Accessibility</h2>
+      <p>Fully accessible space with easy entries, clear signage, and staffed support for every attendee movement throughout the venue.</p>
+    </section>
+    <section class="feature">
+      <h2>Upload Ready</h2>
+      <p>Fully self-contained HTML pages with inline styling and scripts, ready for GitHub Pages or static hosting.</p>
+    </section>
+  </main>
+</body>
+</html>

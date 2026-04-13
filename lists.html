@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guestlist | Nexus Events</title>
+  <style>
+    :root {
+      --bg: #060b16;
+      --panel: #0e172f;
+      --accent: #38bdf8;
+      --accent2: #f97316;
+      --text: #eff6ff;
+      --shadow: 0 28px 50px rgba(0,0,0,.3);
+    }
+    body { margin:0; min-height:100vh; font-family: Inter, system-ui, sans-serif; color: var(--text); background: radial-gradient(circle at 15% 15%, rgba(56,189,248,.16), transparent 14%), radial-gradient(circle at 80% 88%, rgba(249,115,22,.14), transparent 18%), var(--bg); }
+    header { padding: 24px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+    .logo { font-weight:800; letter-spacing:.24em; text-transform:uppercase; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; }
+    nav a, .sign-btn { color: var(--text); text-decoration:none; border-radius: 18px; padding: 12px 16px; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); box-shadow: var(--shadow); transition: transform .18s ease, background .18s ease; }
+    nav a:hover, .sign-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.12); }
+    .hero { padding: 40px 32px 0; max-width: 1180px; margin:0 auto; }
+    .hero h1 { margin:0; font-size: clamp(3rem, 5vw, 4.2rem); }
+    .hero p { margin:20px 0 0; color:#aac4e1; max-width:720px; }
+    .grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; padding: 32px; max-width:1180px; margin:0 auto; }
+    .panel, .form-panel { background: rgba(15,23,42,.95); border-radius: 30px; border:1px solid rgba(255,255,255,.07); padding: 34px; box-shadow: var(--shadow); }
+    .panel h2, .form-panel h2 { margin-top:0; font-size:1.5rem; }
+    .guest-item { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:20px 20px; margin-top:18px; border-radius: 24px; background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); }
+    .guest-item strong { font-size:1rem; }
+    .guest-item span { color:#94a3b8; }
+    .form-grid { display:grid; gap:18px; }
+    label { display:flex; flex-direction:column; gap:10px; color:#cbd5e1; font-size:.95rem; }
+    input { width:90%; padding:16px 18px; border-radius: 18px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: var(--text); font:inherit; }
+    .tabs { display:flex; gap:12px; margin-bottom:24px; }
+    .tabs button { padding:14px 18px; border:none; border-radius:20px; cursor:pointer; font-weight:700; background: rgba(255,255,255,.06); color: var(--text); box-shadow: var(--shadow); }
+    .tabs button.active { background: linear-gradient(135deg, var(--accent), var(--accent2)); color:#020617; }
+    .login-actions { display:flex; gap:14px; flex-wrap:wrap; margin-top:20px; }
+    .login-actions button { flex:1 1 150px; min-width: 150px; padding:18px 20px; border:none; border-radius:24px; font-weight:800; color:#020617; background: linear-gradient(135deg, var(--accent2), var(--accent)); box-shadow: 0 24px 36px rgba(0,0,0,.24); cursor:pointer; }
+    .note { margin-top:16px; color:#94a3b8; }
+    @media (max-width: 860px) { .grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nexus Events</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="evnts.html">Events</a>
+      <a href="tickets.html">Tickets</a>
+      <a href="lists.html">Guestlist</a>
+      <a href="venue.html">Venue</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Guestlist and access control in one polished space.</h1>
+    <p>Choose sign in or register, then review the guestlist details or update your attendance plan.</p>
+  </section>
+  <main class="grid">
+    <section class="panel">
+      <h2 id="guestlist-title">Guestlist</h2>
+      <p class="note">Events can use a trusted guestlist gate to manage VIP entry. The button below links directly to a curated guestlist section.</p>
+      <div class="guest-item"><strong>Sara Lee</strong><span>VIP Guestlist</span></div>
+      <div class="guest-item"><strong>Jordan Miles</strong><span>Premium Pass</span></div>
+      <div class="guest-item"><strong>Casey Park</strong><span>Standard Ticket</span></div>
+      <div class="guest-item"><strong>Avery Cho</strong><span>Guestlist Reserved</span></div>
+    </section>
+    <section class="form-panel">
+      <div class="tabs">
+        <button id="signInTab" class="active" onclick="showForm('signin')">Sign In</button>
+        <button id="registerTab" onclick="showForm('register')">Register</button>
+      </div>
+      <form id="signinForm">
+        <h2>Sign in to your event pass</h2>
+        <div class="form-grid">
+          <label>Email<input type="email" id="signinEmail" placeholder="name@example.com" required></label>
+          <label>Password<input type="password" id="signinPassword" placeholder="••••••••" required></label>
+        </div>
+        <div class="login-actions">
+          <button type="button" onclick="submitSignIn()">Sign In</button>
+          <button type="button" onclick="window.location.href='tickets.html'">Book Tickets</button>
+        </div>
+      </form>
+      <form id="registerForm" style="display:none;">
+        <h2>Create an account</h2>
+        <div class="form-grid">
+          <label>Name<input type="text" id="registerName" placeholder="Full name" required></label>
+          <label>Email<input type="email" id="registerEmail" placeholder="name@example.com" required></label>
+          <label>Password<input type="password" id="registerPassword" placeholder="Create password" required></label>
+        </div>
+        <div class="login-actions">
+          <button type="button" onclick="submitRegister()">Register</button>
+          <button type="button" onclick="window.location.href='tickets.html'">Choose Ticket</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script>
+    const signinForm = document.getElementById('signinForm');
+    const registerForm = document.getElementById('registerForm');
+    const signInTab = document.getElementById('signInTab');
+    const registerTab = document.getElementById('registerTab');
+
+    function showForm(mode) {
+      if (mode === 'register') {
+        signInTab.classList.remove('active');
+        registerTab.classList.add('active');
+        signinForm.style.display = 'none';
+        registerForm.style.display = 'block';
+      } else {
+        registerTab.classList.remove('active');
+        signInTab.classList.add('active');
+        registerForm.style.display = 'none';
+        signinForm.style.display = 'block';
+      }
+    }
+
+    function submitSignIn() {
+      const email = document.getElementById('signinEmail').value.trim();
+      const password = document.getElementById('signinPassword').value.trim();
+      if (!email || !password) { alert('Enter your email and password.'); return; }
+      alert(`Signed in as ${email}. Proceed to Tickets.`);
+    }
+
+    function submitRegister() {
+      const name = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim();
+      const password = document.getElementById('registerPassword').value.trim();
+      if (!name || !email || !password) { alert('Complete all registration fields.'); return; }
+      alert(`Registered ${name}. Proceed to Tickets.`);
+    }
+  </script>
+</body>
+</html>

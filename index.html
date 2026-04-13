@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Events</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --surface: #111827;
+      --accent: #66f6ff;
+      --accent2: #ff52a0;
+      --text: #f8fafc;
+      --shadow: 0 30px 40px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, rgba(102,246,255,.14), transparent 30%),
+                  radial-gradient(circle at bottom right, rgba(255,82,160,.16), transparent 28%),
+                  var(--bg);
+    }
+    header {
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo { font-size: 1.4rem; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 800; }
+    nav { display: flex; gap: 14px; flex-wrap: wrap; }
+    nav a, .action-btn {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 14px 18px;
+      border-radius: 18px;
+      font-weight: 700;
+      transition: transform .18s ease, background .18s ease;
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.02);
+    }
+    nav a:hover, .action-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.08); }
+    .top-right { display: flex; gap: 12px; }
+    .hero {
+      padding: 80px 32px 42px;
+      display: grid;
+      gap: 40px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .hero-content { max-width: 640px; }
+    .hero h1 { margin: 0; font-size: clamp(3rem, 5vw, 5.2rem); line-height: 0.92; letter-spacing: -0.06em; }
+    .hero p { margin: 24px 0 0; font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 38px; justify-content: flex-start; }
+    .hero-buttons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 220px;
+      min-width: 220px;
+      padding: 24px 32px;
+      border-radius: 28px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      box-shadow: 0 28px 45px rgba(0,0,0,.28);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #020617;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .hero-panel {
+      background: rgba(15,23,42,.9);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 22px;
+    }
+    .panel-title { font-size: 0.98rem; text-transform: uppercase; letter-spacing: .2em; color: #7f8ba4; }
+    .panel-group { display: grid; gap: 16px; }
+    .panel-card {
+      padding: 18px 20px;
+      background: rgba(8,15,27,.85);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .panel-card strong { display: block; font-size: 1.03rem; margin-bottom: 6px; }
+    .panel-card span { color: #94a3b8; font-size: .95rem; }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .guest-btn {
+      flex: 1 1 180px;
+      background: #111827;
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--text);
+    }
+    .guest-btn:hover { background: rgba(255,255,255,.06); }
+    footer {
+      padding: 34px 32px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      max-width: 1180px;
+      margin: 0 auto;
+      color: #94a3b8;
+      font-size: .94rem;
+    }
+    .stat-block { display: grid; gap: 6px; }
+    .stat-block strong { font-size: 1.15rem; }
+    @media (max-width: 760px) {
+      header, .hero, footer { padding-left: 20px; padding-right: 20px; }
+      .hero { padding-top: 60px; }
+      nav { justify-content: center; }
+      .hero-buttons { flex-direction: column; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NEXUS EVENTS</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="evnts.html">Events</a>
+      <a href="tickets.html">Tickets</a>
+      <a href="lists.html">Guestlist</a>
+      <a href="venue.html">Venue</a>
+    </nav>
+    <div class="top-right">
+      <a class="action-btn" href="lists.html#signin">Sign In</a>
+      <a class="action-btn" href="lists.html#register">Register</a>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="hero-content">
+      <p class="panel-title">Event Experience Design</p>
+      <h1>Modern event booking with bold ticket flows and premium guest access.</h1>
+      <p>Explore curated experiences, select tiered access, submit attendee info, and receive your mobile-ready QR code in a streamlined flow.</p>
+      <div class="hero-buttons">
+        <a href="evnts.html">Select Event</a>
+        <a href="tickets.html">Choose Tickets</a>
+      </div>
+    </section>
+
+    <aside class="hero-panel">
+      <div class="panel-title">Fast Track</div>
+      <div class="panel-group">
+        <div class="panel-card"><strong>User flow</strong><span>Select Event → Choose Ticket Tier → Enter Attendee Info → Get QR Code</span></div>
+        <div class="panel-card"><strong>Industry</strong><span>Events, VIP guestlists, venue previews.</span></div>
+        <div class="panel-card"><strong>Design theme</strong><span>Neu brutalism with oversized buttons and vivid highlights.</span></div>
+      </div>
+      <div class="cta-row">
+        <a class="guest-btn" href="lists.html">Guestlist</a>
+        <a class="guest-btn" href="venue.html">Venue Preview</a>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="stat-block"><strong>Upload Ready</strong><span>Deploy on GitHub Pages with a clean single-file page strategy.</span></div>
+    <div class="stat-block"><strong>Navigation</strong><span>All links are functional and modular across pages.</span></div>
+  </footer>
+</body>
+</html>

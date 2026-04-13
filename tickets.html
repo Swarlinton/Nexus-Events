@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tickets | Nexus Events</title>
+  <style>
+    :root {
+      --bg: #0a0f1f;
+      --card: #0f172a;
+      --accent: #7c3aed;
+      --accent2: #22d3ee;
+      --text: #edf2f7;
+      --muted: #94a3b8;
+      --shadow: 0 26px 40px rgba(0,0,0,.32);
+    }
+    body { margin:0; min-height:100vh; font-family: Inter, system-ui, sans-serif; color: var(--text); background: radial-gradient(circle at 10% 15%, rgba(34,211,238,.14), transparent 16%), radial-gradient(circle at 90% 85%, rgba(124,58,237,.12), transparent 18%), var(--bg); }
+    header { padding: 24px 32px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; }
+    .logo { font-size: 1.1rem; font-weight:800; letter-spacing:.22em; text-transform:uppercase; }
+    nav { display:flex; gap:10px; flex-wrap:wrap; }
+    nav a, .book-btn { color: var(--text); text-decoration:none; padding:12px 16px; border-radius: 18px; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); box-shadow: var(--shadow); transition: transform .18s ease, background .18s ease; }
+    nav a:hover, .book-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.12); }
+    .hero { padding: 40px 32px 24px; max-width: 1180px; margin:0 auto; }
+    .hero h1 { margin:0; font-size: clamp(3rem, 5vw, 4.2rem); line-height:0.92; }
+    .hero p { margin:18px 0 0; max-width:720px; color: #b8c2d1; font-size:1rem; }
+    .layout { display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; padding: 30px 32px 48px; max-width:1180px; margin:0 auto; }
+    .panel, .form-card { background: rgba(15,23,42,.9); border-radius: 30px; border:1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); padding: 5px; }
+    .panel h2, .form-card h2 { margin-top:0; font-size:1.45rem; }
+    .ticket-option { display:flex; justify-content:space-between; align-items:center; gap:18px; margin-top:24px; padding:22px 22px 18px; background: rgba(255,255,255,.03); border-radius:22px; border:1px solid rgba(255,255,255,.08); }
+    .ticket-option strong { font-size:1.05rem; }
+    .ticket-option span { color:#94a3b8; }
+    .ticket-option button, .ticket-option a { min-width: 140px; padding:14px 18px; border:none; border-radius:20px; font-weight:800; color:#020617; background: linear-gradient(135deg, var(--accent2), var(--accent)); box-shadow: 0 24px 34px rgba(0,0,0,.3); cursor:pointer; }
+    .ticket-option button:hover, .ticket-option a:hover { transform: translateY(-1px); }
+    .form-group { display:grid; gap:16px; margin-top:24px; }
+    label { display:flex; flex-direction:column; gap:8px; font-size:.95rem; color:#cbd5e1; }
+    input, select { width:93%; padding:16px 18px; border-radius:20px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: var(--text); font:inherit; }
+    .form-actions { display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; }
+    .form-actions button { min-width: 160px; padding: 16px 20px; border:none; border-radius:22px; font-weight:800; color:#020617; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: 0 24px 34px rgba(0,0,0,.3); cursor:pointer; }
+    .qr-result { margin-top: 26px; padding: 22px; border-radius: 24px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); }
+    .qr-result pre { margin:0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size:.88rem; color:#d1d5db; }
+    .note { margin-top:16px; color:#94a3b8; font-size:.96rem; }
+    @media (max-width: 860px) { .layout { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nexus Events</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="evnts.html">Events</a>
+      <a href="tickets.html">Tickets</a>
+      <a href="lists.html">Guestlist</a>
+      <a href="venue.html">Venue</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <h1>Choose your ticket tier and enter attendee details.</h1>
+    <p>Complete the path from event selection to QR-ready entry with high-impact calls and a polished booking experience.</p>
+  </section>
+  <main class="layout">
+    <section class="panel">
+      <h2>Ticket tiers</h2>
+      <div class="ticket-option"><div><strong id="tier-name">Standard</strong><span> Entry access with digital program</span></div><button type="button" onclick="selectTier('Standard')">Select</button></div>
+      <div class="ticket-option"><div><strong>Premium</strong><span> Front row, drinks, priority entry</span></div><button type="button" onclick="selectTier('Premium')">Select</button></div>
+      <div class="ticket-option"><div><strong>VIP Guestlist</strong><span> VIP lounge, gifts, reserved seating</span></div><button type="button" onclick="selectTier('VIP Guestlist')">Select</button></div>
+      <p class="note">Large buy buttons keep the flow clear: choose, confirm, and finalize your attendee details.</p>
+    </section>
+    <section class="form-card">
+      <h2>Attendee information</h2>
+      <form id="ticketForm">
+        <div class="form-group">
+          <label>Selected Tier<input type="text" id="selectedTier" value="Standard" readonly></label>
+          <label>Name<input type="text" id="attendeeName" placeholder="Full name" required></label>
+          <label>Email<input type="email" id="attendeeEmail" placeholder="name@example.com" required></label>
+          <label>Phone<input type="tel" id="attendeePhone" placeholder="(555) 123-4567"></label>
+          <label>Event choice<select id="eventChoice"><option>Summit Launch Night</option><option>Neon Afterglow</option><option>Future Forum</option></select></label>
+        </div>
+        <div class="form-actions">
+          <button type="button" onclick="generateQR()">Get QR Code</button>
+          <a class="book-btn" href="lists.html">View Guestlist</a>
+        </div>
+      </form>
+      <div id="qrBlock" class="qr-result" style="display:none;">
+        <strong>QR Code Ready</strong>
+        <pre id="qrCodeText"></pre>
+        <p class="note">Copy the code or screenshot it to use as entry authorization.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const selectedTier = document.getElementById('selectedTier');
+    const tierName = document.getElementById('tier-name');
+    const qrBlock = document.getElementById('qrBlock');
+    const qrCodeText = document.getElementById('qrCodeText');
+
+    function selectTier(name) {
+      selectedTier.value = name;
+      tierName.textContent = name;
+      qrBlock.style.display = 'none';
+    }
+
+    function generateQR() {
+      const name = document.getElementById('attendeeName').value.trim();
+      const email = document.getElementById('attendeeEmail').value.trim();
+      const tier = selectedTier.value;
+      if (!name || !email) {
+        alert('Please enter name and email to generate your QR code.');
+        return;
+      }
+      const payload = `${name} | ${email} | ${tier} | ${new Date().toISOString()}`;
+      const code = btoa(payload).match(/.{1,24}/g).join('\n');
+      qrCodeText.textContent = `EVENT QR\n--------------------\n${code}\n--------------------\nTier: ${tier}`;
+      qrBlock.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
